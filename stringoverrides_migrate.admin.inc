@@ -73,7 +73,7 @@ function stringoverrides_migrate_admin_export() {
     '#value' => t('Export'),
     '#weight' => 3,
   );
-  $form['#submit'][] = 'stringoverrides_admin_export_submit';
+  $form['#submit'][] = 'stringoverrides_migrate_admin_export_submit';
   return $form;
 }
 
