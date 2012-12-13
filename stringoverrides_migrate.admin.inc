@@ -82,7 +82,7 @@ function stringoverrides_migrate_admin_export() {
  */
 function stringoverrides_migrate_admin_export_submit($form, &$form_state) {
   $lang = $form_state['values']['lang'];
-  $export = stringoverrides_admin_export_text($lang);
+  $export = stringoverrides_migrate_admin_export_text($lang);
   $filename = "my-string-overrides.$lang.po";
   $headers = array(
     'Content-Type' => 'text/plain; charset=UTF-8',
@@ -114,5 +114,7 @@ function stringoverrides_migrate_admin_export_text($lang = 'en') {
       );
     }
   }
+  // If locale module not enabled, import file with its helper functions
+  require_once(DRUPAL_ROOT."/includes/locale.inc");  
   return _locale_export_po_generate($languages[$lang], $strings);
 }
